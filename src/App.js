@@ -1,7 +1,14 @@
 import React from 'react';
+import { RecoilRoot } from 'recoil';
+
+import MainPage from './pages/MainPage';
 
 const App = () => {
-  return <div></div>;
+  return (
+    <RecoilRoot>
+      <MainPage />
+    </RecoilRoot>
+  );
 };
 
 export default App;
