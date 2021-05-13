@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 import { inputQuery } from '../../recoil/store';
 
 const SearchBar = () => {
-  const [query, setQuery] = useRecoilState(inputQuery);
+  const setQuery = useSetRecoilState(inputQuery);
   const [input, setInput] = useState('');
 
   const onFormSubmit = (e) => {

@@ -2,18 +2,11 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 
 import { currentWeatherData } from '../../recoil/store';
+import { unixToTime } from '../../utils/dateTime.utils';
 import WeatherCard from './WeatherCard';
 
 const WeatherList = () => {
   const data = useRecoilValue(currentWeatherData);
-
-  const unixToTime = (timestamp) => {
-    var date = new Date(timestamp * 1000);
-    var hours = date.getHours();
-    var minutes = '0' + date.getMinutes();
-
-    return `${hours + ':' + minutes.substr(-2)}`;
-  };
 
   return (
     <React.Fragment>

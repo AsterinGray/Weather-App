@@ -2,8 +2,8 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 
 import { currentWeatherData } from '../recoil/store';
-import { dayOfWeek } from '../data/dayOfWeek';
-import { monthNames } from '../data/monthNames';
+import { dayOfWeek } from '../constants/dayOfWeek';
+import { monthNames } from '../constants/monthNames';
 
 import SearchBar from './common/SearchBar';
 

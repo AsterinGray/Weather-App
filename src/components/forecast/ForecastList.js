@@ -1,23 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRecoilValue } from 'recoil';
-import { dayOfWeek } from '../../data/dayOfWeek';
 
 import { forecastWeatherData } from '../../recoil/store';
+import { getDay } from '../../utils/dateTime.utils';
 import ForecastCard from './ForecastCard';
 
 const ForecastList = () => {
   const data = useRecoilValue(forecastWeatherData);
-
-  const getDay = (index) => {
-    const date = new Date();
-    var added = index + date.getDay() + 1;
-
-    if (added >= 7) {
-      added -= 7;
-    }
-
-    return dayOfWeek[added].substring(0, 3);
-  };
 
   const renderList = data.daily.map((datum, index) => {
     return (

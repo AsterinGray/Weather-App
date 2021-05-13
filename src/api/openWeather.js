@@ -10,8 +10,7 @@ export const currentWeather = axios.create({
 });
 
 export const weatherForecast = axios.create({
-  baseURL:
-    'https://api.openweathermap.org/data/2.5/onecall?lat=3.6346&lon=98.7054',
+  baseURL: 'https://api.openweathermap.org/data/2.5/onecall?',
   params: {
     appid: KEY,
   },

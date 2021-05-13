@@ -74,7 +74,7 @@ const MainPage = () => {
   const searchWeather = () => {
     getSearchWeather().then((res) => {
       setCurr(res);
-      getSearchForecast(curr).then((res) => {
+      getSearchForecast(res).then((res) => {
         setForecast(res);
       });
     });
@@ -91,6 +91,7 @@ const MainPage = () => {
   useEffect(() => {
     if (query) {
       searchWeather();
+      console.log(forecast);
     }
   }, [query]);
 
