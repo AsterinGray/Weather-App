@@ -14,8 +14,3 @@ export const forecastWeatherData = atom({
   key: 'forecastWeatherData',
   default: '',
 });
-
-export const degree = atom({
-  key: 'degree',
-  default: '',
-});

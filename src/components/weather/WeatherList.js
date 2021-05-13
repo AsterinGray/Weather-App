@@ -10,7 +10,7 @@ const WeatherList = () => {
 
   return (
     <React.Fragment>
-      <h1 className="text-light">Today's Weather</h1>
+      <h1 className="text-medium">Current Weather</h1>
       <div className="weather-list">
         <WeatherCard title="Humidity" data={data.main.humidity} attr="%" />
         <WeatherCard title="Pressure" data={data.main.pressure} attr="mb" />

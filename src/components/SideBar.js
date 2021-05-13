@@ -2,22 +2,12 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 
 import { currentWeatherData } from '../recoil/store';
-import { dayOfWeek } from '../constants/dayOfWeek';
-import { monthNames } from '../constants/monthNames';
 
 import SearchBar from './common/SearchBar';
+import { timezoneToDate } from '../utils/dateTime.utils';
 
 const SideBar = () => {
   const resp = useRecoilValue(currentWeatherData);
-
-  const getDate = () => {
-    const dt = new Date();
-    const day = dayOfWeek[dt.getDay()];
-    const date = dt.getDate();
-    const month = monthNames[dt.getMonth()];
-
-    return `${day}, ${date} ${month}`;
-  };
 
   return (
     <aside className="aside">
@@ -38,7 +28,7 @@ const SideBar = () => {
             {resp.main.temp}
             <span>&#176;</span>
           </h1>
-          <p className="text-light">{getDate()}</p>
+          <p className="text-light">{timezoneToDate(resp.timezone)}</p>
         </div>
         <div className="detail text-light">
           <img src="./images/cloud-icon.png" alt="Cloud Icon" />

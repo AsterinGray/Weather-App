@@ -7,7 +7,7 @@ import {
   inputQuery,
 } from '../recoil/store';
 
-import { currentWeather, weatherForecast } from '../api/openWeather';
+import { getCurrentWeather, getWeatherForecast } from '../api/openWeather';
 
 import SideBar from '../components/SideBar';
 import MainContent from '../components/MainContent';
@@ -20,7 +20,7 @@ const MainPage = () => {
   const query = useRecoilValue(inputQuery);
 
   const getWeather = async () => {
-    const response1 = await currentWeather.get('', {
+    const response1 = await getCurrentWeather.get('', {
       params: {
         lon: position.lon,
         lat: position.lat,
@@ -28,7 +28,7 @@ const MainPage = () => {
       },
     });
 
-    const response2 = await weatherForecast.get('', {
+    const response2 = await getWeatherForecast.get('', {
       params: {
         lon: position.lon,
         lat: position.lat,
@@ -39,7 +39,7 @@ const MainPage = () => {
     setForecast(response2.data);
   };
 
-  const getPosition = () => {
+  const getUserPosition = () => {
     window.navigator.geolocation.getCurrentPosition((position) => {
       setPosition({
         lat: position.coords.latitude,
@@ -49,7 +49,7 @@ const MainPage = () => {
   };
 
   const getSearchWeather = async () => {
-    const response = await currentWeather.get('', {
+    const response = await getCurrentWeather.get('', {
       params: {
         q: query,
         units: 'metric',
@@ -60,7 +60,7 @@ const MainPage = () => {
   };
 
   const getSearchForecast = async (data) => {
-    const response = await weatherForecast.get('', {
+    const response = await getWeatherForecast.get('', {
       params: {
         lat: data.coord.lat,
         lon: data.coord.lon,
@@ -82,7 +82,7 @@ const MainPage = () => {
 
   useEffect(() => {
     if (!position.lon && !position.lat) {
-      getPosition();
+      getUserPosition();
     } else if (!curr) {
       getWeather();
     }
@@ -91,7 +91,6 @@ const MainPage = () => {
   useEffect(() => {
     if (query) {
       searchWeather();
-      console.log(forecast);
     }
   }, [query]);
 
