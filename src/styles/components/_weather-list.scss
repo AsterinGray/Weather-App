@@ -1,0 +1,41 @@
+.weather-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: auto;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 25%;
+    margin: 0.5rem;
+    padding: 1rem 2rem;
+    height: 150px;
+    border-radius: 15px;
+
+    .card-title {
+      font-family: MontserratLight;
+      font-size: 2rem;
+    }
+
+    .card-desc {
+      font-family: MontserratBold;
+      text-align: center;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      font-size: 3rem;
+
+      p {
+        margin: 0;
+      }
+
+      div {
+        font-family: MontserratLight;
+        font-size: 1rem;
+      }
+    }
+  }
+}

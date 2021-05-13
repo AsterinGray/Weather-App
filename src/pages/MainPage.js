@@ -1,28 +1,42 @@
 import React, { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
-import { currentWeatherResponse } from '../recoil/store';
+import {
+  currentWeatherData,
+  forecastWeatherData,
+  inputQuery,
+} from '../recoil/store';
+
 import { currentWeather, weatherForecast } from '../api/openWeather';
 
-import MainContent from '../components/MainContent';
 import SideBar from '../components/SideBar';
-import Loader from '../components/Loader';
+import MainContent from '../components/MainContent';
+import Loader from '../components/common/Loader';
 
 const MainPage = () => {
   const [position, setPosition] = useState('');
-  const [resp, setResp] = useRecoilState(currentWeatherResponse);
+  const [curr, setCurr] = useRecoilState(currentWeatherData);
+  const [forecast, setForecast] = useRecoilState(forecastWeatherData);
+  const query = useRecoilValue(inputQuery);
 
   const getWeather = async () => {
-    const response = await currentWeather.get('', {
+    const response1 = await currentWeather.get('', {
       params: {
         lon: position.lon,
         lat: position.lat,
+        units: 'metric',
       },
     });
 
-    const data = await weatherForecast.get('');
-    console.log(data);
-    setResp(response.data);
+    const response2 = await weatherForecast.get('', {
+      params: {
+        lon: position.lon,
+        lat: position.lat,
+        units: 'metric',
+      },
+    });
+    setCurr(response1.data);
+    setForecast(response2.data);
   };
 
   const getPosition = () => {
@@ -34,18 +48,54 @@ const MainPage = () => {
     });
   };
 
+  const getSearchWeather = async () => {
+    const response = await currentWeather.get('', {
+      params: {
+        q: query,
+        units: 'metric',
+      },
+    });
+
+    return response.data;
+  };
+
+  const getSearchForecast = async (data) => {
+    const response = await weatherForecast.get('', {
+      params: {
+        lat: data.coord.lat,
+        lon: data.coord.lon,
+        units: 'metric',
+      },
+    });
+
+    return response.data;
+  };
+
+  const searchWeather = () => {
+    getSearchWeather().then((res) => {
+      setCurr(res);
+      getSearchForecast(curr).then((res) => {
+        setForecast(res);
+      });
+    });
+  };
+
   useEffect(() => {
     if (!position.lon && !position.lat) {
       getPosition();
-    } else if (!resp) {
+    } else if (!curr) {
       getWeather();
-    } else {
-      console.log(resp);
     }
-  });
+  }, [position, curr, forecast]);
+
+  useEffect(() => {
+    if (query) {
+      searchWeather();
+    }
+  }, [query]);
 
   const renderFragment = () => {
-    if (resp) {
+    if (curr) {
       return (
         <React.Fragment>
           <SideBar />

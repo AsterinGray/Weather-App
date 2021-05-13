@@ -1,0 +1,33 @@
+.header {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+
+  .degree {
+    margin-left: auto;
+    display: flex;
+
+    label {
+      background-color: white;
+      color: black;
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 30px;
+      margin: 0 0.5rem;
+      cursor: pointer;
+    }
+
+    input {
+      display: none;
+    }
+
+    input:checked + label {
+      background-color: black;
+      color: white;
+    }
+  }
+}

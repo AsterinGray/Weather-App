@@ -1,36 +1,14 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 
-import { currentWeatherResponse } from '../recoil/store';
-import SearchBar from '../components/SearchBar';
+import { currentWeatherData } from '../recoil/store';
+import { dayOfWeek } from '../data/dayOfWeek';
+import { monthNames } from '../data/monthNames';
+
+import SearchBar from './common/SearchBar';
 
 const SideBar = () => {
-  const resp = useRecoilValue(currentWeatherResponse);
-
-  const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-
-  const dayOfWeek = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-  ];
+  const resp = useRecoilValue(currentWeatherData);
 
   const getDate = () => {
     const dt = new Date();
@@ -57,7 +35,7 @@ const SideBar = () => {
         </div>
         <div className="temp">
           <h1 className="text-light">
-            {resp.main.temp - (resp.main.temp % 100)}
+            {resp.main.temp}
             <span>&#176;</span>
           </h1>
           <p className="text-light">{getDate()}</p>

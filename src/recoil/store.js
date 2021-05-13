@@ -5,7 +5,17 @@ export const inputQuery = atom({
   default: '',
 });
 
-export const currentWeatherResponse = atom({
-  key: 'currentWeatherResponse',
+export const currentWeatherData = atom({
+  key: 'currentWeatherData',
+  default: '',
+});
+
+export const forecastWeatherData = atom({
+  key: 'forecastWeatherData',
+  default: '',
+});
+
+export const degree = atom({
+  key: 'degree',
   default: '',
 });
