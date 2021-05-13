@@ -30,11 +30,13 @@ export const timezoneToDate = (timezone) => {
   return `${day}, ${date} ${month}`;
 };
 
-export const getTime = (index) => {
-  if (index > 12) {
-    index -= 12;
-    return `${index} pm`;
+export const getTime = (timezone) => {
+  const d = new Date(new Date(timezone * 1000));
+  var hours = d.getHours();
+  if (hours > 12) {
+    hours -= 12;
+    return `${hours} pm`;
   } else {
-    return `${index} am`;
+    return `${hours} am`;
   }
 };

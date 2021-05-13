@@ -16,19 +16,19 @@ const ForecastList = () => {
         key={index}
         title={getDay(index)}
         image={datum.weather[0].icon}
-        highTemp={datum.temp.max}
-        lowTemp={datum.temp.min}
+        pop={Math.round(datum.pop * 100)}
       />
     );
   });
 
   const renderHourlyList = data.hourly.slice(0, 24).map((datum, index) => {
+    console.log(datum);
     return (
       <ForecastCard
         key={index}
-        title={getTime(index)}
+        title={getTime(datum.dt)}
         image={datum.weather[0].icon}
-        highTemp={datum.temp}
+        pop={Math.round(datum.pop * 100)}
       />
     );
   });

@@ -13,8 +13,8 @@ const WeatherList = () => {
       <h1 className="text-medium">Current Weather</h1>
       <div className="weather-list">
         <WeatherCard title="Humidity" data={data.main.humidity} attr="%" />
-        <WeatherCard title="Pressure" data={data.main.pressure} attr="mb" />
-        <WeatherCard title="Wind" data={data.wind.speed} attr="km/h" />
+        <WeatherCard title="Pressure" data={data.main.pressure} attr="hPa" />
+        <WeatherCard title="Wind" data={data.wind.speed} attr="m/h" />
         <WeatherCard title="Clouds" data={data.clouds.all} attr="%" />
         <WeatherCard title="Sunrise" data={unixToTime(data.sys.sunrise)} />
         <WeatherCard title="Sunset" data={unixToTime(data.sys.sunset)} />

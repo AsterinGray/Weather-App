@@ -28,10 +28,20 @@
     margin-bottom: auto;
     overflow-x: auto;
     width: 75vw;
-    box-sizing: border-box;
+    scrollbar-color: #6699cc #ffffff;
+    &::-webkit-scrollbar {
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: #6699cc;
+    }
 
     .card {
-      width: 7rem;
+      flex-shrink: 0;
+      width: 10%;
       padding: 1rem;
       margin: 0.5rem;
       background-color: white;

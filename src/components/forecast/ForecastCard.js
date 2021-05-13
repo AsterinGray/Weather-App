@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ForecastCard = ({ title, image, highTemp, lowTemp }) => {
+const ForecastCard = ({ title, image, pop }) => {
   return (
     <div className="card">
       <div className="card-title">{title}</div>
@@ -9,8 +9,7 @@ const ForecastCard = ({ title, image, highTemp, lowTemp }) => {
         alt="weather icon"
       />
       <div className="card-description">
-        <div>{highTemp}</div>
-        <div id="gray">{lowTemp}</div>
+        <div>{pop}%</div>
       </div>
     </div>
   );
