@@ -40,18 +40,12 @@ const MainPage = () => {
   };
 
   const getUserPosition = () => {
-    window.navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setPosition({
-          lat: position.coords.latitude,
-          lon: position.coords.longitude,
-        });
-      },
+    window.navigator.geolocation.getCurrentPosition((position) => {
       setPosition({
-        lat: -6.121435,
-        lon: 106.774124,
-      })
-    );
+        lat: position.coords.latitude,
+        lon: position.coords.longitude,
+      });
+    });
   };
 
   const getSearchWeather = async () => {
