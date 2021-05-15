@@ -10,7 +10,7 @@ const ForecastList = () => {
   const [forecastType, setForecastType] = useState('daily');
   const daily = useRef('checked');
 
-  const renderDailyList = data.daily.map((datum, index) => {
+  const renderDailyList = data.daily.slice(0, 7).map((datum, index) => {
     return (
       <ForecastCard
         key={index}

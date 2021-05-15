@@ -22,7 +22,6 @@ export const getDay = (index) => {
 
 export const timezoneToDate = (timezone) => {
   const d = new Date(new Date().getTime() - timezone * 1000);
-  console.log(d);
   const date = d.getDate();
   const month = monthNames[d.getMonth()];
   const day = dayOfWeek[d.getDay()];
